@@ -5,12 +5,12 @@
 # Source0 file verified with key 0x49A7787EF8D3C039 (doug@uq.edu.au)
 #
 Name     : NetworkManager-l2tp
-Version  : 1.2.14
-Release  : 1
-URL      : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.2.14/NetworkManager-l2tp-1.2.14.tar.xz
-Source0  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.2.14/NetworkManager-l2tp-1.2.14.tar.xz
-Source1 : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.2.14/NetworkManager-l2tp-1.2.14.tar.xz.asc
-Summary  : No detailed summary available
+Version  : 1.2.16
+Release  : 2
+URL      : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.2.16/NetworkManager-l2tp-1.2.16.tar.xz
+Source0  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.2.16/NetworkManager-l2tp-1.2.16.tar.xz
+Source1 : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.2.16/NetworkManager-l2tp-1.2.16.tar.xz.asc
+Summary  : L2TP support for NetworkManager
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: NetworkManager-l2tp-data = %{version}-%{release}
@@ -32,6 +32,7 @@ BuildRequires : pkgconfig(libnm-util)
 BuildRequires : pkgconfig(libnma)
 BuildRequires : pkgconfig(libsecret-1)
 BuildRequires : ppp-dev
+BuildRequires : util-linux
 
 %description
 The files in the "shared/" directory are used by all components
@@ -82,14 +83,15 @@ locales components for the NetworkManager-l2tp package.
 
 
 %prep
-%setup -q -n NetworkManager-l2tp-1.2.14
+%setup -q -n NetworkManager-l2tp-1.2.16
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571631799
+export SOURCE_DATE_EPOCH=1572882269
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -109,10 +111,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1571631799
+export SOURCE_DATE_EPOCH=1572882269
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/NetworkManager-l2tp
-cp %{_builddir}/NetworkManager-l2tp-1.2.14/COPYING %{buildroot}/usr/share/package-licenses/NetworkManager-l2tp/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1
+cp %{_builddir}/NetworkManager-l2tp-1.2.16/COPYING %{buildroot}/usr/share/package-licenses/NetworkManager-l2tp/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1
 %make_install
 %find_lang NetworkManager-l2tp
 
