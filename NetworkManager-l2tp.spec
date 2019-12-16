@@ -6,10 +6,10 @@
 #
 Name     : NetworkManager-l2tp
 Version  : 1.2.16
-Release  : 2
+Release  : 3
 URL      : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.2.16/NetworkManager-l2tp-1.2.16.tar.xz
 Source0  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.2.16/NetworkManager-l2tp-1.2.16.tar.xz
-Source1 : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.2.16/NetworkManager-l2tp-1.2.16.tar.xz.asc
+Source1  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.2.16/NetworkManager-l2tp-1.2.16.tar.xz.asc
 Summary  : L2TP support for NetworkManager
 Group    : Development/Tools
 License  : GPL-2.0
@@ -25,10 +25,6 @@ BuildRequires : pkgconfig(NetworkManager)
 BuildRequires : pkgconfig(gio-unix-2.0)
 BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(libnm)
-BuildRequires : pkgconfig(libnm-glib)
-BuildRequires : pkgconfig(libnm-glib-vpn)
-BuildRequires : pkgconfig(libnm-gtk)
-BuildRequires : pkgconfig(libnm-util)
 BuildRequires : pkgconfig(libnma)
 BuildRequires : pkgconfig(libsecret-1)
 BuildRequires : ppp-dev
@@ -84,14 +80,14 @@ locales components for the NetworkManager-l2tp package.
 
 %prep
 %setup -q -n NetworkManager-l2tp-1.2.16
+cd %{_builddir}/NetworkManager-l2tp-1.2.16
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1572882269
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1576104851
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -111,7 +107,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1572882269
+export SOURCE_DATE_EPOCH=1576104851
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/NetworkManager-l2tp
 cp %{_builddir}/NetworkManager-l2tp-1.2.16/COPYING %{buildroot}/usr/share/package-licenses/NetworkManager-l2tp/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1
