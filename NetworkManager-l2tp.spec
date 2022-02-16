@@ -6,11 +6,11 @@
 #
 Name     : NetworkManager-l2tp
 Version  : 1.2.16
-Release  : 5
+Release  : 6
 URL      : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.2.16/NetworkManager-l2tp-1.2.16.tar.xz
 Source0  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.2.16/NetworkManager-l2tp-1.2.16.tar.xz
 Source1  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.2.16/NetworkManager-l2tp-1.2.16.tar.xz.asc
-Summary  : L2TP support for NetworkManager
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: NetworkManager-l2tp-data = %{version}-%{release}
@@ -21,7 +21,6 @@ Requires: NetworkManager-l2tp-locales = %{version}-%{release}
 BuildRequires : gettext
 BuildRequires : intltool
 BuildRequires : perl(XML::Parser)
-BuildRequires : pkgconfig(NetworkManager)
 BuildRequires : pkgconfig(gio-unix-2.0)
 BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(libnm)
@@ -87,15 +86,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576104851
+export SOURCE_DATE_EPOCH=1645045157
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -104,10 +103,10 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1576104851
+export SOURCE_DATE_EPOCH=1645045157
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/NetworkManager-l2tp
 cp %{_builddir}/NetworkManager-l2tp-1.2.16/COPYING %{buildroot}/usr/share/package-licenses/NetworkManager-l2tp/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1
