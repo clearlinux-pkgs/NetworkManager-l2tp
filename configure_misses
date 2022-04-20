@@ -1,3 +1,7 @@
+Configure miss: 32-bit host C ABI
+Configure miss: CFLocaleCopyPreferredLanguages
+Configure miss: properties/import-export.c:133:17: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
+
 Configure miss: whether -Wparentheses-equality works as expected
 Configure miss: whether -Wtypedef-redefinition works as expected
 Configure miss: whether -Wunknown-attributes works as expected

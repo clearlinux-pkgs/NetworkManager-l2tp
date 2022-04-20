@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x49A7787EF8D3C039 (doug@uq.edu.au)
 #
 Name     : NetworkManager-l2tp
-Version  : 1.2.16
-Release  : 6
-URL      : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.2.16/NetworkManager-l2tp-1.2.16.tar.xz
-Source0  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.2.16/NetworkManager-l2tp-1.2.16.tar.xz
-Source1  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.2.16/NetworkManager-l2tp-1.2.16.tar.xz.asc
+Version  : 1.20.2
+Release  : 7
+URL      : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.2/NetworkManager-l2tp-1.20.2.tar.xz
+Source0  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.2/NetworkManager-l2tp-1.20.2.tar.xz
+Source1  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.2/NetworkManager-l2tp-1.20.2.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -19,15 +19,17 @@ Requires: NetworkManager-l2tp-libexec = %{version}-%{release}
 Requires: NetworkManager-l2tp-license = %{version}-%{release}
 Requires: NetworkManager-l2tp-locales = %{version}-%{release}
 BuildRequires : gettext
-BuildRequires : intltool
 BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(gio-unix-2.0)
 BuildRequires : pkgconfig(gtk+-3.0)
+BuildRequires : pkgconfig(gtk4)
+BuildRequires : pkgconfig(libcrypto)
 BuildRequires : pkgconfig(libnm)
 BuildRequires : pkgconfig(libnma)
+BuildRequires : pkgconfig(libnma-gtk4)
 BuildRequires : pkgconfig(libsecret-1)
+BuildRequires : pkgconfig(nss)
 BuildRequires : ppp-dev
-BuildRequires : util-linux
 
 %description
 The files in the "shared/" directory are used by all components
@@ -78,15 +80,15 @@ locales components for the NetworkManager-l2tp package.
 
 
 %prep
-%setup -q -n NetworkManager-l2tp-1.2.16
-cd %{_builddir}/NetworkManager-l2tp-1.2.16
+%setup -q -n NetworkManager-l2tp-1.20.2
+cd %{_builddir}/NetworkManager-l2tp-1.20.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1645045157
+export SOURCE_DATE_EPOCH=1650485398
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -106,10 +108,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1645045157
+export SOURCE_DATE_EPOCH=1650485398
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/NetworkManager-l2tp
-cp %{_builddir}/NetworkManager-l2tp-1.2.16/COPYING %{buildroot}/usr/share/package-licenses/NetworkManager-l2tp/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1
+cp %{_builddir}/NetworkManager-l2tp-1.20.2/COPYING %{buildroot}/usr/share/package-licenses/NetworkManager-l2tp/4cc77b90af91e615a64ae04893fdffa7939db84c
 %make_install
 %find_lang NetworkManager-l2tp
 
@@ -119,14 +121,14 @@ cp %{_builddir}/NetworkManager-l2tp-1.2.16/COPYING %{buildroot}/usr/share/packag
 
 %files data
 %defattr(-,root,root,-)
-/usr/share/appdata/network-manager-l2tp.metainfo.xml
 /usr/share/dbus-1/system.d/nm-l2tp-service.conf
+/usr/share/metainfo/network-manager-l2tp.metainfo.xml
 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/NetworkManager/libnm-vpn-plugin-l2tp-editor.so
 /usr/lib64/NetworkManager/libnm-vpn-plugin-l2tp.so
-/usr/lib64/pppd/2.4.7/nm-l2tp-pppd-plugin.so
+/usr/lib64/pppd/2.4.9/nm-l2tp-pppd-plugin.so
 
 %files libexec
 %defattr(-,root,root,-)
@@ -135,7 +137,7 @@ cp %{_builddir}/NetworkManager-l2tp-1.2.16/COPYING %{buildroot}/usr/share/packag
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/NetworkManager-l2tp/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1
+/usr/share/package-licenses/NetworkManager-l2tp/4cc77b90af91e615a64ae04893fdffa7939db84c
 
 %files locales -f NetworkManager-l2tp.lang
 %defattr(-,root,root,-)
