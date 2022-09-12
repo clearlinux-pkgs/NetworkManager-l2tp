@@ -6,7 +6,7 @@
 #
 Name     : NetworkManager-l2tp
 Version  : 1.20.2
-Release  : 7
+Release  : 8
 URL      : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.2/NetworkManager-l2tp-1.20.2.tar.xz
 Source0  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.2/NetworkManager-l2tp-1.20.2.tar.xz
 Source1  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.2/NetworkManager-l2tp-1.20.2.tar.xz.asc
