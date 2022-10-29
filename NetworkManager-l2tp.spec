@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x49A7787EF8D3C039 (doug@uq.edu.au)
 #
 Name     : NetworkManager-l2tp
-Version  : 1.20.4
-Release  : 9
-URL      : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.4/NetworkManager-l2tp-1.20.4.tar.xz
-Source0  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.4/NetworkManager-l2tp-1.20.4.tar.xz
-Source1  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.4/NetworkManager-l2tp-1.20.4.tar.xz.asc
+Version  : 1.20.6
+Release  : 10
+URL      : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.6/NetworkManager-l2tp-1.20.6.tar.xz
+Source0  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.6/NetworkManager-l2tp-1.20.6.tar.xz
+Source1  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.6/NetworkManager-l2tp-1.20.6.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -80,15 +80,15 @@ locales components for the NetworkManager-l2tp package.
 
 
 %prep
-%setup -q -n NetworkManager-l2tp-1.20.4
-cd %{_builddir}/NetworkManager-l2tp-1.20.4
+%setup -q -n NetworkManager-l2tp-1.20.6
+cd %{_builddir}/NetworkManager-l2tp-1.20.6
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1667013414
+export SOURCE_DATE_EPOCH=1667021209
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -108,7 +108,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1667013414
+export SOURCE_DATE_EPOCH=1667021209
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/NetworkManager-l2tp
 cp %{_builddir}/NetworkManager-l2tp-%{version}/COPYING %{buildroot}/usr/share/package-licenses/NetworkManager-l2tp/4cc77b90af91e615a64ae04893fdffa7939db84c
