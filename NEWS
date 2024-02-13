@@ -1,4 +1,42 @@
 ==========================================================
+NetworkManager-l2tp-1.20.12
+Overview of changes since NetworkManager-l2tp-1.20.10
+==========================================================
+
+Changes:
+* Add support for usernames that contain a space
+* Do not use noccp ppp option with MPPEA
+* Determine correct local IP address for IPSec
+* Update Georgian (ka) translation.
+
+==========================================================
+NetworkManager-l2tp-1.20.10
+Overview of changes since NetworkManager-l2tp-1.20.8
+==========================================================
+
+Changes:
+* Fix missing ppp user option.
+* Add support for compiling against pppd-2.5.0.
+* Add error output for missing TLS filenames.
+* Remove bashisms in configure script.
+* Spell checked code with CSpell.
+
+==========================================================
+NetworkManager-l2tp-1.20.8
+Overview of changes since NetworkManager-l2tp-1.20.6
+==========================================================
+
+Changes:
+* Fix padding of PPP Options dialog.
+* Undo PTP peer & ext GW routing prevention workaround first introduced
+  with NetworkManager-l2tp 1.8.4 as workaround no longer works with
+  NetworkManager 1.36. The actial fix should be done in NetworkManager.
+* Add support for Manual IPv4 configuration options:
+  Address, Netmask and Gateway.
+* Remove deprecated OpenSSL 3 related code
+* Load L2TP kernel modules if NM_L2TP_MODPROBE env variable set.
+
+==========================================================
 NetworkManager-l2tp-1.20.6
 Overview of changes since NetworkManager-l2tp-1.20.4
 ==========================================================
@@ -45,7 +83,7 @@ Changes:
 * deprecated libnm-glib/libnm-util code removed and
   --with-libnm-glib configure option removed.
 * Honors $CHARONDEBUG and $PLUTODEBUG even without --debug.
-* Sourcecode reformated with clang-format.
+* Sourcecode reformatted with clang-format.
 * intltool for i18n build support no longer required.
 * Updated translations.
 
