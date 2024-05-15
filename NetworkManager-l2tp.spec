@@ -8,11 +8,11 @@
 # Source0 file verified with key 0x88953E6F011CDC96 (doug@uq.edu.au)
 #
 Name     : NetworkManager-l2tp
-Version  : 1.20.14
-Release  : 12
-URL      : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.14/NetworkManager-l2tp-1.20.14.tar.xz
-Source0  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.14/NetworkManager-l2tp-1.20.14.tar.xz
-Source1  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.14/NetworkManager-l2tp-1.20.14.tar.xz.asc
+Version  : 1.20.16
+Release  : 13
+URL      : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.16/NetworkManager-l2tp-1.20.16.tar.xz
+Source0  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.16/NetworkManager-l2tp-1.20.16.tar.xz
+Source1  : https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.20.16/NetworkManager-l2tp-1.20.16.tar.xz.asc
 Source2  : 88953E6F011CDC96.pkey
 Summary  : No detailed summary available
 Group    : Development/Tools
@@ -97,10 +97,10 @@ chmod 700 .gnupg
 gpg --homedir .gnupg --import %{SOURCE2}
 gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE1} %{SOURCE0} > gpg.status
 grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) 88953E6F011CDC96' gpg.status
-%setup -q -n NetworkManager-l2tp-1.20.14
-cd %{_builddir}/NetworkManager-l2tp-1.20.14
+%setup -q -n NetworkManager-l2tp-1.20.16
+cd %{_builddir}/NetworkManager-l2tp-1.20.16
 pushd ..
-cp -a NetworkManager-l2tp-1.20.14 buildavx2
+cp -a NetworkManager-l2tp-1.20.16 buildavx2
 popd
 
 %build
@@ -108,7 +108,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1713130340
+export SOURCE_DATE_EPOCH=1715782170
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -162,7 +162,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1713130340
+export SOURCE_DATE_EPOCH=1715782170
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/NetworkManager-l2tp
 cp %{_builddir}/NetworkManager-l2tp-%{version}/COPYING %{buildroot}/usr/share/package-licenses/NetworkManager-l2tp/4cc77b90af91e615a64ae04893fdffa7939db84c || :
